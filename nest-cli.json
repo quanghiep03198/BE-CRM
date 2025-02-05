@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/nest-cli",
+	"collection": "@nestjs/schematics",
+	"typeCheck": true,
+	"sourceRoot": "src",
+	"builder": "swc",
+	"tsConfigPath": "tsconfig.build.json",
+	"compilerOptions": {
+		"deleteOutDir": true,
+		"assets": [
+			{
+				"include": "modules/**/sql/*.sql",
+				"watchAssets": true
+			}
+		]
+	}
+}
