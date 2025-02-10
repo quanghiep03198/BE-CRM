@@ -157,7 +157,7 @@ cp .env.example .env
 ### Initialize PostgreSQL and Redis via Docker
 
 ```bash
-	docker-compose up -d
+docker-compose up -d
 ```
 
 ### Database Migration
