@@ -11,6 +11,8 @@ import { CacheModule } from './cache'
 import { FileLogger } from './common/helpers/file-logger.helper'
 import { appConfigFactory, validateConfig } from './configs'
 import { DatabaseModule } from './databases'
+import { AuthModule } from './modules/auth/auth.module'
+import { UserModule } from './modules/user/user.module'
 
 @Module({
 	imports: [
@@ -37,7 +39,10 @@ import { DatabaseModule } from './databases'
 			maxListeners: 10,
 			verboseMemoryLeak: false,
 			ignoreErrors: false
-		})
+		}),
+		// * Feature Modules
+		AuthModule,
+		UserModule
 	],
 	controllers: [AppController],
 	providers: [
