@@ -22,4 +22,9 @@ export class UserEntity extends BaseAbstractEntity {
 	authenticate(password: string) {
 		return bcrypt.compareSync(password, this.password)
 	}
+
+	constructor(user: Partial<UserEntity>) {
+		super()
+		Object.assign(this, user)
+	}
 }

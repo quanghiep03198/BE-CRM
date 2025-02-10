@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm'
-import { DATABASE_NAME } from './constants'
+import { DATA_SOURCE, DATABASE_NAME } from './constants'
 
 @Module({
 	imports: [
 		// * MSSQL Server
 		TypeOrmModule.forRootAsync({
-			name: DATABASE_NAME,
+			name: DATA_SOURCE,
 			inject: [ConfigService],
 			useFactory: (configService: ConfigService) => {
 				return {

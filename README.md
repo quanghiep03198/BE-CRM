@@ -12,16 +12,6 @@ This project aims to develop a robust and scalable backend system to manage lear
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
-
-- **Product Management**: Create, update, delete, and list products.
-- **Inventory Management**: Track stock levels, update quantities, and monitor stock movements.
-- **Order Processing**: Manage incoming and outgoing orders, including validations.
-- **Warehouse Zones**: Manage different storage zones and sections within the warehouse.
-- **Redis Caching**: Improve API performance by caching frequently accessed data.
-- **Database Transactions**: Ensure data integrity using SQL Server and TypeORM.
-- **Authentication and Authorization**: Secure API endpoints using JWT authentication (optional).
-
 ## TechStack
 
 - **Languages & Frameworks**

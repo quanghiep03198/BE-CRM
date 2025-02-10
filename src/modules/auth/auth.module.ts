@@ -1,4 +1,3 @@
-import { CacheModule } from '@/cache'
 import { Module } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
@@ -9,7 +8,6 @@ import { LocalStrategy } from './strategies/local.strategy'
 
 @Module({
 	imports: [
-		CacheModule,
 		UserModule,
 		JwtModule.registerAsync({
 			global: true,

@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager'
 import { Module, OnApplicationBootstrap, OnApplicationShutdown, OnModuleInit } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { APP_FILTER } from '@nestjs/core'
@@ -7,7 +8,6 @@ import { ThrottlerModule } from '@nestjs/throttler'
 import * as Sentry from '@sentry/nestjs'
 import { SentryGlobalFilter, SentryModule } from '@sentry/nestjs/setup'
 import { AppController } from './app.controller'
-import { CacheModule } from './cache'
 import { FileLogger } from './common/helpers/file-logger.helper'
 import { appConfigFactory, validateConfig } from './configs'
 import { DatabaseModule } from './databases'
@@ -17,8 +17,12 @@ import { UserModule } from './modules/user/user.module'
 @Module({
 	imports: [
 		// * Core Modules
-		CacheModule,
 		DatabaseModule,
+		CacheModule.registerAsync({
+			isGlobal: true,
+			inject: [ConfigService],
+			useFactory: (configService: ConfigService) => configService.getOrThrow('cache')
+		}),
 		ConfigModule.forRoot({
 			envFilePath: ['.env'],
 			isGlobal: true,

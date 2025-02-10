@@ -1,3 +1,4 @@
+import { DATA_SOURCE } from '@/databases/constants'
 import { ConflictException, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { stringify } from 'node:querystring'
@@ -17,7 +18,7 @@ type AvatarGenerateOptions = {
 
 @Injectable()
 export class UserService extends BaseAbstractService<UserEntity> {
-	constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>) {
+	constructor(@InjectRepository(UserEntity, DATA_SOURCE) private readonly userRepository: Repository<UserEntity>) {
 		super(userRepository)
 	}
 

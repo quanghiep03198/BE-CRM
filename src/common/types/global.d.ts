@@ -25,6 +25,7 @@ export declare global {
 			PORT: string
 
 			// * Database
+			POSTGRES_URL: string
 			POSTGRES_HOST: string
 			POSTGRES_PORT: string
 			POSTGRES_USER: string
