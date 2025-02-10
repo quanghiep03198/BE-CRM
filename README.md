@@ -1,8 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=quanghiep03198_BE-WMS&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=quanghiep03198_BE-WMS)
-
-# Warehouse Management API
-
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=quanghiep03198_BE-WMS)
+# CRM APIs
 
 This project aims to develop a robust and scalable backend system to manage learning materials, exams, and extracurricular activities for FPT Polytechnic. The system will serve as the foundation for a digital education platform, streamlining academic and administrative processes while enhancing user experience for students, teachers, and administrators.
 
