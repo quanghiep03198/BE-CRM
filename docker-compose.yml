@@ -4,14 +4,13 @@ networks:
    app-tier:
       driver: bridge
 
-name: 'lms-backend'
+name: 'crm-backend'
 
 services:
    api:
       container_name: node-server
       env_file:
          - .env
-      condition: ${NODE_ENV} == 'production'
       build:
          context: .
          dockerfile: Dockerfile
