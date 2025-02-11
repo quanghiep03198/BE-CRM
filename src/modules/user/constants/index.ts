@@ -1,5 +1,5 @@
 export enum UserRoles {
-	GVCN = 'GVCN',
-	TM = 'TM',
-	GV = 'GV'
+	CNBM = 'CNBM', // * Chủ nhiệm bộ môn
+	TM = 'TM', // * Trưởng môn
+	GV = 'GV' // * Giảng viên
 }

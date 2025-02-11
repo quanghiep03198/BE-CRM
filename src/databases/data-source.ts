@@ -1,21 +1,22 @@
 import { env } from '@/common/utils'
-
-import 'dotenv/config'
-
 import { join } from 'path'
 import { DataSource, DataSourceOptions } from 'typeorm'
 import { type SeederOptions } from 'typeorm-extension'
 
 export default new DataSource({
 	type: 'postgres',
-	url: env('POSTGRES_URL'),
-	// host: env('POSTGRES_HOST'),
-	// port: env('POSTGRES_PORT', { serialize: (value): number => parseInt(value) }),
-	entities: [join(__dirname, '../**/*.entity.{ts,js}'), join(__dirname, './**/*.entity.{ts,js}')],
+	host: env('POSTGRES_HOST'),
+	port: env('POSTGRES_PORT', { serialize: (value): number => parseInt(value) }),
+	username: env('POSTGRES_USER'),
+	password: env('POSTGRES_PASSWORD'),
+	database: env('POSTGRES_DB'),
+	schema: 'dbo',
+	entities: [join(__dirname, '../**/*.entity.{ts,js}')],
+	subscribers: [join(__dirname, '../**/*.subscriber.{ts,js}')],
 	migrations: [join(__dirname, './migrations/*.{ts,js}')],
 	seeds: [join(__dirname, './seeds/**/*.seeder.{ts,js}')],
 	logging: true,
-	synchronize: false,
+	synchronize: true,
 	options: {
 		trustServerCertificate: true,
 		encrypt: false,

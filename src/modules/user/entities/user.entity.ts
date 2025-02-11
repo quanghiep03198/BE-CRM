@@ -4,16 +4,16 @@ import * as bcrypt from 'bcrypt'
 import { Column, Entity, Unique } from 'typeorm'
 import { UserRoles } from '../constants'
 
-@Entity({ database: DATABASE_NAME, name: 'users', synchronize: true })
+@Entity({ database: DATABASE_NAME, schema: 'dbo', name: 'users', synchronize: true })
 export class UserEntity extends BaseAbstractEntity {
-	@Column({ type: 'nvarchar', length: 100 })
+	@Column({ type: 'varchar', length: 100 })
 	@Unique('unq_idx_email', ['email'])
 	email: string
 
-	@Column({ type: 'nvarchar', length: 20 })
+	@Column({ type: 'varchar', length: 255 })
 	password: string
 
-	@Column({ type: 'nvarchar', length: 100 })
+	@Column({ type: 'varchar', length: 100 })
 	display_name: string
 
 	@Column({ type: 'enum', enum: UserRoles })

@@ -1,7 +1,7 @@
 # Use the official Node.js image as the base image
-FROM node:22.13.1
+FROM node:22.13.1 AS base
 
-RUN npm i -g pnpm
+RUN npm i -g pnpm pm2
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -22,4 +22,4 @@ RUN pnpm build
 EXPOSE 8080
 
 # Command to run the application
-CMD ["pnpm", "start:dev"]
+CMD ["pm2", "start", "ecosystem.config.js", "--no-daemon"]

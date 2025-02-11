@@ -1,10 +1,8 @@
 node_modules
 dist
 docs
+npm-debug.log
 .env.example
 .git
 .gitignore
-.prettierrc
 *.md
-commitlint.config.js
-npm-debug.log

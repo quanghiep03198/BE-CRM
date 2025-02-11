@@ -8,9 +8,10 @@ name: 'crm-backend'
 
 services:
    api:
-      container_name: node-server
+      container_name: nest-api:1.0.0
       env_file:
          - .env
+
       build:
          context: .
          dockerfile: Dockerfile

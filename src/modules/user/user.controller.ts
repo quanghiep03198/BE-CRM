@@ -1,6 +1,7 @@
 import { AuthGuard, HttpMethod, Route, User } from '@/common/decorators'
 import { ZodValidationPipe } from '@/common/pipes'
 import { Body, Controller, HttpStatus } from '@nestjs/common'
+import { UserRoles } from './constants'
 import { CreateUserDTO, createUserDTO } from './dto/user.dto'
 import { UserService } from './user.service'
 
@@ -14,7 +15,7 @@ export class UserController {
 		statusCode: HttpStatus.CREATED,
 		message: 'Thêm người dùng thành công'
 	})
-	@AuthGuard()
+	@AuthGuard(UserRoles.CNBM)
 	async createUser(@Body(new ZodValidationPipe(createUserDTO)) payload: CreateUserDTO) {
 		return this.userService.createUser(payload)
 	}

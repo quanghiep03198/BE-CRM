@@ -40,7 +40,7 @@ export declare global {
 			REDIS_PASSWORD: string
 
 			// * Bcrypt
-			SALT_ROUND: string
+			BCRYPT_SALT_ROUNDS: string
 
 			// * Jwt
 			JWT_SECRET: string
