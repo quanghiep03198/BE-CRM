@@ -14,7 +14,7 @@ This project aims to develop a robust and scalable backend system to manage lear
 
 ## Features
 
-Check out [Project Notes]('https://app.clickup.com/9018870668/v/dc/8ct22wc-198/8ct22wc-218') on ClickUp
+Check out [Project Notes](https://app.clickup.com/9018870668/v/dc/8ct22wc-198/8ct22wc-218) on ClickUp
 
 ## TechStack
 
@@ -124,7 +124,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/quanghiep03198/BE-LMS.git <dir_name>
+git clone https://github.com/quanghiep03198/BE-CRM.git <dir_name>
 
 cd <dir_name>
 ```
@@ -145,10 +145,10 @@ The application uses environment variables for configuration. Create a .env file
 cp .env.example .env
 ```
 
-### Initialize PostgreSQL and Redis via Docker
+### Initialize PostgreSQL, PgAdmin 4 and Redis via Docker
 
 ```bash
-docker-compose up -d --watch --build
+docker-compose up -d --no-deps postgres pgadmin redis
 ```
 
 ### Database Migration
@@ -157,6 +157,12 @@ To initialize the database schema using TypeORM, run:
 
 ```bash
 pnpm run migration:run
+```
+
+To seed data to database with TypeORM, run:
+
+```bash
+pnpm run seed:run
 ```
 
 This will create the necessary tables and relationships in SQL Server.
@@ -169,7 +175,9 @@ To start the development server:
 pnpm run start:dev
 ```
 
-The API will now be available at http://localhost:8080.
+The application will now be available at http://localhost:8080.
+
+**By accessing this URL you will redirect to the API documents on Postman**
 
 ### Running Tests
 
