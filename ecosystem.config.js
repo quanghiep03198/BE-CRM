@@ -1,13 +1,11 @@
-require('dotenv').config()
-
 /** @type {EcosystemConfig} */
 module.exports = {
 	apps: [
 		{
-			name: 'wms-api',
+			name: 'crm-api',
 			script: './dist/main.js',
 			cwd: __dirname,
-			watch: false,
+			watch: process.env.NODE_ENV === 'development',
 			exec_mode: 'cluster',
 			instances: 2,
 			max_memory_restart: '1G',

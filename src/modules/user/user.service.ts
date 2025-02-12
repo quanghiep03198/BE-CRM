@@ -1,3 +1,4 @@
+import { DATA_SOURCE } from '@/databases/constants'
 import { ConflictException, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { stringify } from 'node:querystring'
@@ -17,7 +18,7 @@ type AvatarGenerateOptions = {
 
 @Injectable()
 export class UserService extends BaseAbstractService<UserEntity> {
-	constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>) {
+	constructor(@InjectRepository(UserEntity, DATA_SOURCE) private readonly userRepository: Repository<UserEntity>) {
 		super(userRepository)
 	}
 
@@ -28,11 +29,13 @@ export class UserService extends BaseAbstractService<UserEntity> {
 	}
 
 	async getProfile(id: number): Promise<Partial<UserEntity>> {
-		return await this.userRepository
+		const user = await this.userRepository
 			.createQueryBuilder('u')
 			.select(['u.id', 'u.email', 'u.display_name', 'u.role'])
 			.where('u.id = :id', { id })
 			.getRawOne()
+
+		return { ...user, picture: this.generateAvatar({ name: user.display_name }) }
 	}
 
 	async findOneByEmail(email: string): Promise<UserEntity> {

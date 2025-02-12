@@ -1,14 +1,15 @@
 import { Logger, RequestMethod, VersioningType } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
-import bodyParser from 'body-parser'
-import compression from 'compression'
+import * as compression from 'compression'
+import * as express from 'express'
 import helmet from 'helmet'
-import morgan from 'morgan'
+import * as morgan from 'morgan'
 import { AppModule } from './app.module'
 import './instrument'
 
-const logger = new Logger('Server')
+const requestLogger = new Logger('HTTP')
+const serverLogger = new Logger('Server')
 
 async function bootstrap() {
 	try {
@@ -18,12 +19,12 @@ async function bootstrap() {
 		app.enableVersioning({ type: VersioningType.URI })
 		app.enableCors()
 		app.use(helmet())
-		app.use(bodyParser.json({ limit: '50mb' }))
-		app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+		app.use(express.json({ limit: '50mb' }))
+		app.use(express.urlencoded({ limit: '50mb', extended: true }))
 		app.use(
 			morgan('dev', {
 				stream: {
-					write: (str) => Logger.log(str.replace(/\n$/, ''), 'HTTP')
+					write: (str) => requestLogger.log(str.replace(/\n$/, ''), 'HTTP')
 				}
 			})
 		)
@@ -35,10 +36,10 @@ async function bootstrap() {
 		)
 		await app.listen(+configService.get('PORT'), configService.get('HOST'), async () => {
 			const URL = await app.getUrl()
-			logger.log(URL, 'Server')
+			serverLogger.log(URL, 'Server')
 		})
 	} catch (error) {
-		logger.error(error.message)
+		serverLogger.error(error)
 	}
 }
 

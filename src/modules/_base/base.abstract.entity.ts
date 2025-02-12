@@ -6,9 +6,9 @@ export abstract class BaseAbstractEntity {
 	@PrimaryGeneratedColumn({ name: 'id', type: 'int' })
 	id: number
 
-	@CreateDateColumn({ type: 'datetime', default: format(new Date(), 'yyyy-MM-dd HH:mm:ss') })
+	@CreateDateColumn({ name: 'created_at', type: 'timestamp', default: format(new Date(), 'yyyy-MM-dd HH:mm:ss') })
 	created_at: Date
 
-	@UpdateDateColumn({ type: 'datetime', nullable: true, onUpdate: 'CURRENT_TIMESTAMP' })
+	@UpdateDateColumn({ name: 'updated_at', type: 'timestamp', nullable: true })
 	updated_at: Date
 }

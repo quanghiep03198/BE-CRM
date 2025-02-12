@@ -1,3 +1,8 @@
 node_modules
-npm-debug.log
+dist
 docs
+npm-debug.log
+.env.example
+.git
+.gitignore
+*.md

@@ -25,6 +25,7 @@ export declare global {
 			PORT: string
 
 			// * Database
+			POSTGRES_URL: string
 			POSTGRES_HOST: string
 			POSTGRES_PORT: string
 			POSTGRES_USER: string
@@ -39,7 +40,7 @@ export declare global {
 			REDIS_PASSWORD: string
 
 			// * Bcrypt
-			SALT_ROUND: string
+			BCRYPT_SALT_ROUNDS: string
 
 			// * Jwt
 			JWT_SECRET: string

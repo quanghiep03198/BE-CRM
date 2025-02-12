@@ -14,15 +14,7 @@ export const configValidator = z.object({
 		.transform((value) => +value),
 
 	// * PostgreSQL
-	POSTGRES_HOST: z.string().trim().min(1),
-	POSTGRES_PORT: z
-		.string()
-		.trim()
-		.min(1)
-		.refine((value) => !isNaN(+value))
-		.transform((value) => Number(value)),
-	POSTGRES_USER: z.string().trim().min(1),
-	POSTGRES_PASSWORD: z.string().trim().min(1),
+	// POSTGRES_URL: z.string().trim().min(1),
 	PGADMIN_DEFAULT_EMAIL: z.string().trim().min(1),
 	PGADMIN_DEFAULT_PASSWORD: z.string().trim().min(1),
 
