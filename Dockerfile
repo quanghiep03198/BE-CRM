@@ -1,7 +1,12 @@
 # Use the official Node.js image as the base image
-FROM node:22.13.1 AS base
+FROM node:22.13.1
 
+# Install pnpm and pm2 globally
 RUN npm i -g pnpm pm2
+
+ENV NODE_ENV=production
+
+ENV PORT=8080
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -19,7 +24,7 @@ COPY . .
 RUN pnpm build
 
 # Expose the application port
-EXPOSE 8080
+EXPOSE ${PORT}
 
 # Command to run the application
-CMD ["pm2", "start", "ecosystem.config.js", "--no-daemon"]
+CMD ["pnpm", "pm2"]

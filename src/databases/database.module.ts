@@ -5,7 +5,7 @@ import { DATA_SOURCE, DATABASE_NAME } from './constants'
 
 @Module({
 	imports: [
-		// * MSSQL Server
+		// * PostgreSQL database connection
 		TypeOrmModule.forRootAsync({
 			name: DATA_SOURCE,
 			inject: [ConfigService],

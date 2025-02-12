@@ -1,17 +1,15 @@
-version: '1'
-
 networks:
    app-tier:
       driver: bridge
 
-name: 'crm-backend'
+name: 'crm-api'
 
 services:
    api:
-      container_name: nest-api:1.0.0
+      container_name: nest-app
       env_file:
          - .env
-
+      image: quanghiep031/crm-api:1.0.0
       build:
          context: .
          dockerfile: Dockerfile
@@ -22,7 +20,7 @@ services:
          - pgadmin
          - redis
       volumes:
-         - .:/app
+         - .:/usr/src/app
       networks:
          - app-tier
 

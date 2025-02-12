@@ -12,6 +12,10 @@ This project aims to develop a robust and scalable backend system to manage lear
 - [Contributing](#contributing)
 - [License](#license)
 
+## Features
+
+Check out [Project Notes]('https://app.clickup.com/9018870668/v/dc/8ct22wc-198/8ct22wc-218') on ClickUp
+
 ## TechStack
 
 - **Languages & Frameworks**
@@ -52,8 +56,10 @@ This project aims to develop a robust and scalable backend system to manage lear
 Before you begin, ensure you have the following installed:
 
 - **Node.js** (v22 LTS or higher)
-- **SQL Server** (Local or remote instance)
-- **NPM** or **PNPM**
+- **PostgreSQL** (Local via Docker or Remote instance)
+- **Redis** (Local via Docker or Remote instance)
+- **Docker**
+- **NPM** or **PNPM** (PNPM is recommended)
 
 ### Folder Structure
 
@@ -108,7 +114,6 @@ Before you begin, ensure you have the following installed:
 ├── nest-cli.json
 ├── package.json
 ├── pnpm-lock.yaml
-├── sonar-project.properties
 ├── tsconfig.build.json
 ├── tsconfig.json
 └── ...
@@ -127,7 +132,7 @@ cd <dir_name>
 2. Install the dependencies:
 
 ```bash
- pnpm install
+ pnpm install --save
 ```
 
 3. Set up your PostgreSQL and Redis instances.
@@ -143,7 +148,7 @@ cp .env.example .env
 ### Initialize PostgreSQL and Redis via Docker
 
 ```bash
-docker-compose up -d
+docker-compose up -d --watch --build
 ```
 
 ### Database Migration
